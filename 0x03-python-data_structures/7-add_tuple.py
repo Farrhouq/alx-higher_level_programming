@@ -5,7 +5,7 @@ def add_tuple(tuple_a=(), tuple_b=()):
     else:
         a1 = 0
     if len(tuple_b):
-        b1 = tuple_b[0] 
+        b1 = tuple_b[0]
     else:
         b1 = 0
 
@@ -14,7 +14,7 @@ def add_tuple(tuple_a=(), tuple_b=()):
     else:
         a2 = 0
     if len(tuple_b) - 1 >= 1:
-        b2 = tuple_b[1] 
+        b2 = tuple_b[1]
     else:
         b2 = 0
     return (a1 + b1, a2 + b2)
