@@ -1,34 +1,40 @@
 #!/usr/bin/python3
-"""A script that reads stdin line by line and computes metrics"""
+"""modsd"""
+
 import sys
 
 
-def read_stdin_and_print():
-    """reads stdin line by line and computes metrics"""
-    count = 0
-    status_code_dict = {code: 0 for code in [200, 301, 400, 401,
-                                             403, 404, 405, 500]}
-    total_size = 0
+def print_statistics(total_file_size, status_code_counts):
+    """klfs"""
+    print("File size: {}".format(total_file_size))
+    for status_code in sorted(status_code_counts):
+        print("{}: {}".format(status_code, status_code_counts[status_code]))
+
+
+def main():
+    """main"""
+    total_file_size = 0
+    status_code_counts = {}
+
     try:
-        for line in sys.stdin:
-            count += 1
-            status_code = line.split()[-2]
-            file_size = line.split()[-1]
-            status_code_dict[int(status_code)] += 1
-            total_size += int(file_size)
+        for i, line in enumerate(sys.stdin, start=1):
+            try:
+                parts = line.split()
+                file_size = int(parts[-1])
+                status_code = int(parts[-2])
+                total_file_size += file_size
+                status_code_counts[status_code] = status_code_counts.get(
+                    status_code, 0) + 1
 
-            if not count % 10:
-                print("File size:", total_size)
-                for key, value in status_code_dict.items():
-                    if value:
-                        print(f"{key}: {value}")
-
+                if i % 10 == 0:
+                    print_statistics(total_file_size, status_code_counts)
+            except (ValueError, IndexError):
+                continue
     except KeyboardInterrupt:
-        print("File size:", total_size)
-        for key, value in status_code_dict.items():
-            if value:
-                print(f"{key}: {value}")
+        pass  # Continue processing with the accumulated statistics
+
+    print_statistics(total_file_size, status_code_counts)
 
 
 if __name__ == "__main__":
-    read_stdin_and_print()
+    main()
