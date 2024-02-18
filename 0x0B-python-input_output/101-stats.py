@@ -23,7 +23,7 @@ def read_stdin_and_print():
                     for key, value in status_code_dict.items():
                         if value:
                             print(f"{key}: {value}")
-            except:
+            except (KeyError, ValueError, IndexError):
                 continue
 
     except KeyboardInterrupt:
