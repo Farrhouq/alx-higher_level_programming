@@ -11,17 +11,20 @@ def read_stdin_and_print():
     total_size = 0
     try:
         for line in sys.stdin:
-            count += 1
-            status_code = line.split()[-2]
-            file_size = line.split()[-1]
-            status_code_dict[int(status_code)] += 1
-            total_size += int(file_size)
+            try:
+                count += 1
+                status_code = line.split()[-2]
+                file_size = line.split()[-1]
+                status_code_dict[int(status_code)] += 1
+                total_size += int(file_size)
 
-            if not count % 10:
-                print("File size:", total_size)
-                for key, value in status_code_dict.items():
-                    if value:
-                        print(f"{key}: {value}")
+                if not count % 10:
+                    print("File size:", total_size)
+                    for key, value in status_code_dict.items():
+                        if value:
+                            print(f"{key}: {value}")
+            except:
+                continue
 
     except KeyboardInterrupt:
         pass
