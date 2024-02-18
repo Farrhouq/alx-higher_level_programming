@@ -8,7 +8,7 @@ if __name__ == "__main__":
 
     try:
         list_cur = load('add_item.json')
-    except json.decoder.JSONDecodeError:
+    except FileNotFoundError:
         list_cur = []
     for arg in sys.argv[1:]:
         list_cur.append(arg)
