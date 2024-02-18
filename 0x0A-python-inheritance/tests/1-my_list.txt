@@ -3,6 +3,10 @@ Test cases for 1-my_list.py
 
 >>> MyList = __import__('1-my_list').MyList
 >>>
+>>> len(MyList.__doc__) > 1
+True
+>>> len(__import__('1-my_list').__doc__) > 1
+True
 >>> my_list = MyList([5, 2, 4, 9])
 >>>
 >>> print(my_list)
