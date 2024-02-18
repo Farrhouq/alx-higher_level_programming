@@ -1,0 +1,26 @@
+Test cases for 7-base_geometry.txt
+====================================
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>>
+>>> len(BaseGeometry.__doc__) > 1
+True
+>>> len(__import__('7-base_geometry').__doc__) > 1
+True
+
+>>> g = BaseGeometry()
+>>>
+>>> g.integer_validator("five", 5)
+>>>
+>>> g.integer_validator("five", "5")
+Traceback (most recent call last):
+	...
+TypeError: five must be an integer
+>>> g.integer_validator("zero", 0)
+Traceback (most recent call last):
+	...
+ValueError: zero must be greater than 0
+>>> g.integer_validator("zero", -10)
+Traceback (most recent call last):
+	...
+ValueError: zero must be greater than 0
