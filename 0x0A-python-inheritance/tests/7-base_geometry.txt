@@ -14,17 +14,46 @@ True
 >>>
 >>> g.integer_validator("five", "5")
 Traceback (most recent call last):
-	...
+...
 TypeError: five must be an integer
 >>> g.integer_validator("zero", 0)
 Traceback (most recent call last):
-	...
+...
 ValueError: zero must be greater than 0
 >>> g.integer_validator("zero", -10)
 Traceback (most recent call last):
-	...
+...
 ValueError: zero must be greater than 0
 >>> g.area()
 Traceback (most recent call last):
-	...
+...
 Exception: area() is not implemented
+>>> g.integer_validator("negative_one", -1)
+Traceback (most recent call last):
+...
+ValueError: negative_one must be greater than 0
+
+>>> g.integer_validator("string_value", "hello")
+Traceback (most recent call last):
+...
+TypeError: string_value must be an integer
+
+>>> g.integer_validator("float_value", 3.14)
+Traceback (most recent call last):
+...
+TypeError: float_value must be an integer
+
+>>> g.integer_validator("list_value", [1, 2, 3])
+Traceback (most recent call last):
+...
+TypeError: list_value must be an integer
+
+>>> g.integer_validator("dict_value", {"a": 1, "b": 2})
+Traceback (most recent call last):
+...
+TypeError: dict_value must be an integer
+
+>>> g.integer_validator("tuple_value", (1, 2, 3))
+Traceback (most recent call last):
+...
+TypeError: tuple_value must be an integer
