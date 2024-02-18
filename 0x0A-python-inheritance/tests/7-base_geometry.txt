@@ -86,3 +86,11 @@ TypeError: float_value must be an integer
 Traceback (most recent call last):
 ...
 TypeError: negative_float must be an integer
+>>> g.integer_validator("negative_float", float('nan'))
+Traceback (most recent call last):
+...
+TypeError: negative_float must be an integer
+>>> g.integer_validator("negative_float", float('inf'))
+Traceback (most recent call last):
+...
+TypeError: negative_float must be an integer
