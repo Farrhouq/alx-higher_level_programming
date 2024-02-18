@@ -57,3 +57,32 @@ TypeError: dict_value must be an integer
 Traceback (most recent call last):
 ...
 TypeError: tuple_value must be an integer
+>>> g.integer_validator("zero_string", "0")
+Traceback (most recent call last):
+...
+TypeError: zero_string must be an integer
+
+>>> g.integer_validator("empty_string", "")
+Traceback (most recent call last):
+...
+TypeError: empty_string must be an integer
+
+>>> g.integer_validator("none_value", None)
+Traceback (most recent call last):
+...
+TypeError: none_value must be an integer
+
+>>> g.integer_validator("bool_value", True)
+Traceback (most recent call last):
+...
+TypeError: bool_value must be an integer
+
+>>> g.integer_validator("float_value", 3.0)
+Traceback (most recent call last):
+...
+TypeError: float_value must be an integer
+
+>>> g.integer_validator("negative_float", -3.14)
+Traceback (most recent call last):
+...
+TypeError: negative_float must be an integer
