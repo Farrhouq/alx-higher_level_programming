@@ -1,0 +1,13 @@
+Test cases for 1-my_list.py
+==============================
+
+>>> MyList = __import__('1-my_list').MyList
+>>>
+>>> my_list = MyList([5, 2, 4, 9])
+>>>
+>>> print(my_list)
+[5, 2, 4, 9]
+>>> my_list.print_sorted()
+[2, 4, 5, 9]
+>>> print(my_list)
+[5, 2, 4, 9]
