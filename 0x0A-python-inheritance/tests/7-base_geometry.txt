@@ -24,3 +24,6 @@ ValueError: zero must be greater than 0
 Traceback (most recent call last):
 	...
 ValueError: zero must be greater than 0
+>>> g.area()
+Traceback (most recent call last):
+ValueError: area() is not implemented
