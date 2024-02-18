@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-
+"""A script that reads stdin line by line and computes metrics"""
 import sys
 
 
 def read_stdin_and_print():
+    """reads stdin line by line and computes metrics"""
     count = 0
     status_code_dict = {code: 0 for code in [200, 301, 400, 401,
                                              403, 404, 405, 500]}
