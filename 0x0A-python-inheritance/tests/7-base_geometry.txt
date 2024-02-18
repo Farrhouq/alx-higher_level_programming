@@ -94,3 +94,9 @@ TypeError: negative_float must be an integer
 Traceback (most recent call last):
 ...
 TypeError: negative_float must be an integer
+>>> g.integer_validator("unicode_value", ord('a'))
+>>>
+>>> g.integer_validator("binary_value", 0b101010)
+>>>
+>>> g.integer_validator("hex_value", 0xFF)
+>>>
