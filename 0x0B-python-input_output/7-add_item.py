@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""runs some scripts"""
+
 if __name__ == "__main__":
     import sys
     import json
