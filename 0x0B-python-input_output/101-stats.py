@@ -20,7 +20,7 @@ def read_stdin_and_print():
 
                 if not count % 10:
                     print("File size:", total_size)
-                    for key, value in status_code_dict.items():
+                    for key, value in sorted(status_code_dict.items()):
                         if value:
                             print(f"{key}: {value}")
             except (KeyError, ValueError, IndexError):
@@ -30,7 +30,7 @@ def read_stdin_and_print():
         pass
 
     print("File size:", total_size)
-    for key, value in status_code_dict.items():
+    for key, value in sorted(status_code_dict.items()):
         if value:
             print(f"{key}: {value}")
 
