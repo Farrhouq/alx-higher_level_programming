@@ -1,28 +1,60 @@
-#!/usr/bin/python3
-"""Implements a rectangle class"""
+# models/rectangle.py
 
-
-from .base import Base
+from models.base import Base
 
 
 class Rectangle(Base):
-    """A rectangle class"""
-
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
-        self.__width = width
-        self.__height = height
-        self.__x = x
-        self.__y = y
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
 
-    def set_width(self, width):
-        self.__width = width
+    @property
+    def width(self):
+        return self.__width
 
-    def set_height(self, height):
-        self.__height = height
+    @width.setter
+    def width(self, value):
+        self.validate_dimension(value, "width")
+        self.__width = value
 
-    def set_x(self, x):
-        self.__x = x
+    @property
+    def height(self):
+        return self.__height
 
-    def set_y(self, y):
-        self.__y = y
+    @height.setter
+    def height(self, value):
+        self.validate_dimension(value, "height")
+        self.__height = value
+
+    @property
+    def x(self):
+        return self.__x
+
+    @x.setter
+    def x(self, value):
+        self.validate_non_negative(value, "x")
+        self.__x = value
+
+    @property
+    def y(self):
+        return self.__y
+
+    @y.setter
+    def y(self, value):
+        self.validate_non_negative(value, "y")
+        self.__y = value
+
+    def validate_dimension(self, value, attribute):
+        if not isinstance(value, int):
+            raise TypeError("{} must be an integer".format(attribute))
+        if value <= 0:
+            raise ValueError("{} must be > 0".format(attribute))
+
+    def validate_non_negative(self, value, attribute):
+        if not isinstance(value, int):
+            raise TypeError("{} must be an integer".format(attribute))
+        if value < 0:
+            raise ValueError("{} must be >= 0".format(attribute))
