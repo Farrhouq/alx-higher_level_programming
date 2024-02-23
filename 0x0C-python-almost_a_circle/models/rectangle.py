@@ -48,12 +48,14 @@ class Rectangle(Base):
         self.__y = value
 
     def validate_dimension(self, value, attribute):
+        """validates a dimension"""
         if not isinstance(value, int):
             raise TypeError("{} must be an integer".format(attribute))
         if value <= 0:
             raise ValueError("{} must be > 0".format(attribute))
 
     def validate_non_negative(self, value, attribute):
+        """validates a dimension"""
         if not isinstance(value, int):
             raise TypeError("{} must be an integer".format(attribute))
         if value < 0:
@@ -64,6 +66,7 @@ class Rectangle(Base):
         return self.__width * self.__height
 
     def display(self):
+        """prints out the rectangle"""
         for i in range(self.__y):
             print()
         for _ in range(self.height):
@@ -74,20 +77,21 @@ class Rectangle(Base):
     def __str__(self):
         return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - {self.__width}/{self.__height}"
 
-    def update(self, *args):
-        arg_count = len(args)
-        if arg_count >= 1:
-            self.id = args[0]
-        if arg_count >= 2:
-            self.width = args[1]
-        if arg_count >= 3:
-            self.height = args[2]
-        if arg_count >= 4:
-            self.x = args[3]
-        if arg_count >= 5:
-            self.y = args[4]
+    # def update(self, *args):
+    #     arg_count = len(args)
+    #     if arg_count >= 1:
+    #         self.id = args[0]
+    #     if arg_count >= 2:
+    #         self.width = args[1]
+    #     if arg_count >= 3:
+    #         self.height = args[2]
+    #     if arg_count >= 4:
+    #         self.x = args[3]
+    #     if arg_count >= 5:
+    #         self.y = args[4]
 
     def update(self, *args, **kwargs):
+        """updating with both args and kwargs"""
         if args:
             attrs = ["id", "width", "height", "x", "y"]
             for i, arg in enumerate(args):
@@ -95,4 +99,7 @@ class Rectangle(Base):
         else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
+
+
+
 
