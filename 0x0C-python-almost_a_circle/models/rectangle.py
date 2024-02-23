@@ -58,3 +58,8 @@ class Rectangle(Base):
             raise TypeError("{} must be an integer".format(attribute))
         if value < 0:
             raise ValueError("{} must be >= 0".format(attribute))
+
+
+    def area(self):
+        """returns the area"""
+        return self.__width * self.__height
