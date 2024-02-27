@@ -22,3 +22,10 @@ class Square(Rectangle):
         self.validate_dimension(width, "width")
         self.width = width
         self.height = width
+
+
+    def update(self, *args, **kwargs):
+        """updating with both args and kwargs"""
+        attrs = ["id", "size",, "x", "y"]
+        for i, arg in enumerate(args):
+            setattr(self, attrs[i], arg)
