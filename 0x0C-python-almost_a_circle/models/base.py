@@ -23,6 +23,29 @@ class Base:
         return json.dumps(list_dictionaries)
 
     @classmethod
+    def load_from_file_csv(cls):
+        """Deserializes a list of objects from a CSV file"""
+        filename = cls.__name__ + ".csv"
+        try:
+            with open(filename, 'r') as file:
+                lines = file.readlines()
+        except FileNotFoundError:
+            return []
+
+        instances = []
+        for line in lines:
+            data = line.strip().split(',')
+            if cls.__name__ == "Rectangle":
+                instance = cls(int(data[0]), int(data[1]), int(
+                    data[2]), int(data[3]), int(data[4]))
+            elif cls.__name__ == "Square":
+                instance = cls(int(data[0]), int(
+                    data[1]), int(data[2]), int(data[3]))
+            instances.append(instance)
+
+        return instances
+
+    @classmethod
     def save_to_file(cls, list_objs):
         """Writes the JSON string representation of list_objs to a file"""
         if list_objs is None:
