@@ -6,6 +6,7 @@ from models.base import Base
 
 class Rectangle(Base):
     """Rectangle class from Base"""
+
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
         self.width = width
@@ -77,8 +78,9 @@ class Rectangle(Base):
             print("#" * self.width)
 
     def __str__(self):
-        return (f"[Rectangle]({self.id}) {self.__x} /
-                {self.__y} - {self.__width}/{self.__height}")
+        ide, x = self.id, self.__x
+        y, width, height = self.__y, self.__width, self.__height
+        return f"[Rectangle] ({ide}) {x}/{y} - {width}/{height}"
 
     # def update(self, *args):
     #     arg_count = len(args)
