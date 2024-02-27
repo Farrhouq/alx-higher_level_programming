@@ -117,7 +117,7 @@ class Rectangle(Base):
         instances = [cls.create(**dict_obj) for dict_obj in list_dicts]
         return instances
 
-    @classmethod
+   @classmethod
     def save_to_file_csv(cls, list_objs):
         """Serializes a list of objects to a CSV file"""
         filename = cls.__name__ + ".csv"
@@ -149,3 +149,4 @@ class Rectangle(Base):
             instances.append(instance)
 
         return instances
+
