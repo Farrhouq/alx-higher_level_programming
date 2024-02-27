@@ -23,7 +23,6 @@ class Square(Rectangle):
         self.width = width
         self.height = width
 
-
     def update(self, *args, **kwargs):
         """updating with both args and kwargs"""
         if args:
