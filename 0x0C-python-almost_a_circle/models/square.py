@@ -19,6 +19,6 @@ class Square(Rectangle):
 
     @size.setter
     def size(self, width):
-        self.validate_dimension(width)
+        self.validate_dimension(width, "width")
         self.width = width
         self.height = width
