@@ -2,7 +2,7 @@
 """Implements a rectangle class"""
 
 from models.base import Base
-
+import turtle
 
 class Rectangle(Base):
     """Rectangle class from Base"""
@@ -117,7 +117,7 @@ class Rectangle(Base):
         instances = [cls.create(**dict_obj) for dict_obj in list_dicts]
         return instances
 
-   @classmethod
+    @classmethod
     def save_to_file_csv(cls, list_objs):
         """Serializes a list of objects to a CSV file"""
         filename = cls.__name__ + ".csv"
@@ -149,4 +149,29 @@ class Rectangle(Base):
             instances.append(instance)
 
         return instances
+    
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draws all the Rectangles and Squares"""
+        turtle.speed(0)  # Set the drawing speed to fastest
+        turtle.penup()   # Lift the pen to avoid drawing lines between shapes
 
+        for rectangle in list_rectangles:
+            turtle.goto(rectangle.x, rectangle.y)
+            turtle.pendown()
+            for _ in range(2):
+                turtle.forward(rectangle.width)
+                turtle.left(90)
+                turtle.forward(rectangle.height)
+                turtle.left(90)
+            turtle.penup()
+
+        for square in list_squares:
+            turtle.goto(square.x, square.y)
+            turtle.pendown()
+            for _ in range(4):
+                turtle.forward(square.size)
+                turtle.left(90)
+            turtle.penup()
+
+        turtle.done()  # Keep the window open after drawing
