@@ -82,19 +82,6 @@ class Rectangle(Base):
         y, width, height = self.__y, self.__width, self.__height
         return f"[Rectangle] ({ide}) {x}/{y} - {width}/{height}"
 
-    # def update(self, *args):
-    #     arg_count = len(args)
-    #     if arg_count >= 1:
-    #         self.id = args[0]
-    #     if arg_count >= 2:
-    #         self.width = args[1]
-    #     if arg_count >= 3:
-    #         self.height = args[2]
-    #     if arg_count >= 4:
-    #         self.x = args[3]
-    #     if arg_count >= 5:
-    #         self.y = args[4]
-
     def update(self, *args, **kwargs):
         """updating with both args and kwargs"""
         if args:
@@ -115,3 +102,17 @@ class Rectangle(Base):
             "y": self.y
         }
         return ret_dict
+
+    @classmethod
+    def load_from_file(cls):
+        """Returns a list of instances loaded from a file"""
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, 'r') as file:
+                json_data = file.read()
+        except FileNotFoundError:
+            return []
+
+        list_dicts = cls.from_json_string(json_data)
+        instances = [cls.create(**dict_obj) for dict_obj in list_dicts]
+        return instances
