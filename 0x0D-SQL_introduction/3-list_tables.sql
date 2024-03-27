@@ -1,0 +1,6 @@
+-- 3 list tables
+USE INFORMATION_SCHEMA;
+
+SELECT TABLE_NAME
+FROM TABLES
+WHERE TABLE_SCHEMA = 'your_database_name';
