@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""This module gets all the states given the arguments"""
 
 if __name__ == "__main__":
     import MySQLdb
