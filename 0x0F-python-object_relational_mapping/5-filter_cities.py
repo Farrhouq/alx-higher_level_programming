@@ -21,7 +21,7 @@ if __name__ == "__main__":
 
     if data:
         for row in data[:-1]:
-            print(row[0], ", ", end='')
+            print(f"{row[0]}, " , end='')
         print(data[-1][0])
     else:
         print()
