@@ -12,9 +12,11 @@ if __name__ == "__main__":
     db = MySQLdb.connect(user=username, password=password,
                          database=db_name, port=3306, host="localhost")
     c = db.cursor()
-    c.execute("""SELECT cities.name FROM cities JOIN states ON
+    query_string = """SELECT cities.name FROM cities JOIN states ON
               cities.state_id = states.id where states.name =
-              '{}' ORDER BY cities.id ASC;""".format(searched_state))
+              %s ORDER BY cities.id ASC;"""
+
+    c.execute(query_string, (searched_state,))
     data = c.fetchall()
 
     if data:
