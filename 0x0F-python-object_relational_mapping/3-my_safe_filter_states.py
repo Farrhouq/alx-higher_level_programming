@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""This module states with a name searched from the database hbtn_0e_0_usa"""
+"""This module states with a name searched from the database hbtn_0e_0_usa
+safe from sql injections"""
 
 if __name__ == "__main__":
     import MySQLdb
@@ -13,6 +14,10 @@ if __name__ == "__main__":
     c = db.cursor()
     c.execute("""SELECT * FROM states WHERE name
               LIKE '{}' ORDER BY id ASC""".format(searched_name))
+    
+    sql_query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
+    c.execute(sql_query, (searched_name,))
+
     data = c.fetchall()
 
     for row in data:
