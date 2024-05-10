@@ -12,7 +12,7 @@ if __name__ == "__main__":
     db = MySQLdb.connect(user=username, password=password,
                          database=db_name, port=3306, host="localhost")
     c = db.cursor()
-    
+
     sql_query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
     c.execute(sql_query, (searched_name,))
 
