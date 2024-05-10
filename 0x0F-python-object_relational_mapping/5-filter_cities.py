@@ -17,8 +17,10 @@ if __name__ == "__main__":
               '{}' ORDER BY cities.id ASC;""".format(searched_state))
     data = c.fetchall()
 
-    for row in data[:-1]:
-        print(row[0], ", ", end='')
-    
-    print(data[-1][0])
+    if data:
+        for row in data[:-1]:
+            print(row[0], ", ", end='')
+        print(data[-1][0])
+    else:
+        print()
     db.close()
