@@ -4,11 +4,12 @@
 if __name__ == "__main__":
     import MySQLdb
     import sys
+    if len(sys.argv) != 5:
+        sys.exit(1)
     username = sys.argv[1]
     password = sys.argv[2]
     db_name = sys.argv[3]
     searched_name = sys.argv[4]
-
     db = MySQLdb.connect(user=username, password=password,
                          database=db_name, port=3306, host="localhost")
     c = db.cursor()
