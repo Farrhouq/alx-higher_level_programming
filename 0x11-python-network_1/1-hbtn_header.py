@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""This module checks your status"""
+"""This checks a header value"""
 
 if __name__ == "__main__":
     import urllib.request
-    url = 'https://alx-intranet.hbtn.io/status'
-    with urllib.request.urlopen(url) as response:
+    with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as response:
         res = response.read()
         print("Body response:")
         print(f"\t- type: {type(res)}")
