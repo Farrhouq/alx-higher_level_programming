@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""This fetches all states"""
+
 from sqlalchemy.orm import sessionmaker
 
 import sys
@@ -14,4 +16,3 @@ if __name__ == "__main__":
     session = Session()
     for inst in session.query(State).order_by(State.id):
         print(f"{inst.id}: {inst.name}")
-
