@@ -12,9 +12,7 @@ if __name__ == "__main__":
             'X-GitHub-Api-Version': '2022-11-28',
             'Accept': 'application/vnd.github+json'})
     try:
-        for commit in sorted(res.json(),
-                             key=lambda x:
-                             x['commit']['author']['date'])[::-1]:
+        for commit in res.json()[:10]:
             print(f"{commit['sha']}: {commit['commit']['author']['name']}")
     except Exception as e:
         print(e)
