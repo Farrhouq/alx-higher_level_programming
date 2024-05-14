@@ -4,8 +4,8 @@
 from sqlalchemy.orm import sessionmaker
 
 import sys
-from model_city import City, Base
-from model_state import State, Base
+from model_city import City
+from model_state import Base, State
 
 from sqlalchemy import (create_engine)
 
