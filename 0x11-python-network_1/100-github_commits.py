@@ -1,0 +1,14 @@
+#!/usr/bin/python3
+"""This script gets repos"""
+
+if __name__ == "__main__":
+    import requests
+    import sys
+    repo_name = sys.argv[1]
+    owner = sys.argv[2]
+    res = requests.get(f"https://api.github.com/repos/{owner}/{repo_name}/commits",
+                       headers={
+                                'X-GitHub-Api-Version': '2022-11-28',
+                                'Accept': 'application/vnd.github+json'})
+    for commit in res.json():
+        print(f"{commit['sha']}: {commit['commit']['author']['name']}")
