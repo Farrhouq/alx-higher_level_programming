@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This fetches all states with a in their name"""
+"""This adds a new state"""
 
 from sqlalchemy.orm import sessionmaker
 
