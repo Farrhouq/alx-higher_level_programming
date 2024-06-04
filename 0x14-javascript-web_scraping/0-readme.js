@@ -1,8 +1,7 @@
 #!/usr/bin/node
 
 var fs = require('fs');
-const { default: _ } = require('underscore/modules/underscore.js');
-var filename = process.argv[1]
+var filename = process.argv[2]
 
 fs.readFile(filename, 'utf8', function (err, data) {
     if (err) {
@@ -10,5 +9,4 @@ fs.readFile(filename, 'utf8', function (err, data) {
         return;
     }
     console.log(data);
-    
 })
